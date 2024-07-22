@@ -16,6 +16,8 @@ class CatalogController extends AbstractController
     #[Route('/', name: '_index')]
     public function index(Request $request, PaginatorInterface $paginator, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $page_range = $this->getParameter('knp_paginator.page_range');
 
         $datas = $entityManager->getRepository(Product::class)->findBy(

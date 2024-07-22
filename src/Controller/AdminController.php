@@ -18,6 +18,8 @@ class AdminController extends AbstractController
     #[Route('/products', name: '_products')]
     public function index(Request $request, PaginatorInterface $paginator, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $datas = $entityManager->getRepository(Product::class)->findAll();
 
         $products = $paginator->paginate(
