@@ -8,10 +8,12 @@
 
     <table class="table">
         <tbody>
+            {% if is_granted('ROLE_ADMIN') %}
             <tr>
                 <th>Id</th>
                 <td>{{ product.id }}</td>
             </tr>
+            {% endif %}
             <tr>
                 <th>Nom</th>
                 <td>{{ product.name }}</td>
@@ -23,19 +25,34 @@
             <tr>
                 <th>Prix</th>
                 <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Actif</th>
-                <td>{{ product.active ? '<i class="bi bi-check-circle text-success">' : '<i class="bi bi-x-circle text-danger">' }}</td>
-            </tr>
+            </tr> 
+            {% if is_granted('ROLE_ADMIN') %}
+                <tr>
+                    <th>Actif</th>
+                    <td>{{ product.active ? '<i class="bi bi-check-circle text-success">' : '<i class="bi bi-x-circle text-danger">' }}</td>
+                </tr> 
+                <tr>
+                    <th>Publier</th>
+                    <td><a class="btn btn-primary" href="{{ path('app_product_post_fb', {'id': product.id}) }}"><i class="bi bi-facebook"></i></a></td>
+                </tr>   
+            {% endif %}
+ 
         </tbody>
     </table>
+
+    {% if is_granted('ROLE_ADMIN') %}
 
     <a class="btn btn-primary" href="{{ path('app_product_edit', {'id': product.id}) }}">modifier</a>
 
     {{ include('product/_delete_form.html.twig') }}
     
     <a class="btn btn-secondary" href="{{ path('app_admin_products') }}">retour</a>
+
+    {% else %}
+
+    <a class="btn btn-secondary" href="/catalog">retour au catalogue</a>
+
+    {% endif %}
 
 </div>
 {% endblock %}

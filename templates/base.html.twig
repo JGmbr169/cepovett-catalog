@@ -24,11 +24,13 @@
     <div class="container mt-5">
 
     {% if app.user %}
-        <p> Bonjour <strong>{{ app.user.username }}</strong> </p> <p> <a class="btn btn-secondary" href="{{ path('app_logout') }}">Me déconnecter</a> </p>
-    {% endif %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <p> <a class="btn btn-secondary" href="{{ path('app_admin_products') }}">Espace d'administration</a> </p>
+        <p> Bonjour <strong>{{ app.user.username }}</strong> <i class="bi bi-person-circle"></i> </p> 
+        <p> 
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-dark" href="{{ path('app_admin_products') }}">Espace d'administration</a>
+            {% endif %}
+            <a class="btn btn-secondary" href="{{ path('app_logout') }}">Me déconnecter</a>
+        </p>
     {% endif %}
 
     </div>

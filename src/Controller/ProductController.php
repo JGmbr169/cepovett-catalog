@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Service\FacebookService;
 
 #[Route('/product')]
 class ProductController extends AbstractController
@@ -47,9 +48,7 @@ class ProductController extends AbstractController
 
     #[Route('/show/{id}', name: 'app_product_show', methods: ['GET'])]
     public function show(Product $product): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        
+    {        
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
