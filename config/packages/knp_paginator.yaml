@@ -1,0 +1,5 @@
+# config/packages/knp_paginator.yaml
+knp_paginator:
+    page_range: 6
+    template:
+        pagination: 'pagination.html.twig'
