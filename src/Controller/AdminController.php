@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
-// use App\Entity\Product;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Product;
 // use App\Form\ProductType;
 
 
@@ -14,28 +16,20 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends AbstractController
 {
     #[Route('/products', name: '_products')]
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator, EntityManagerInterface $entityManager): Response
     {
+        $datas = $entityManager->getRepository(Product::class)->findAll();
+
+        $products = $paginator->paginate(
+            $datas, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            10 // Nombre de résultats par page
+        );
+
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'products' => $products
         ]);
-    }
-
-    #[Route('/product/add', name: '_product_add')]
-    public function new(Request $request)
-    {
-        // $product = new Product();
-        // $form = $this->createForm(ProductType::class, $product);
-
-        // $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($product);
-        //     $entityManager->flush();
-        //     return $this->redirectToRoute('admin_products');
-        // }
-
-        // return $this->render('admin/product_new.html.twig', ['form' => $form->createView()]);
     }
 
 }

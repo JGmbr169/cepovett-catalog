@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
-
 use App\Entity\Product;
 
 #[Route('/catalog', name: 'app_catalog')]
@@ -19,7 +18,9 @@ class CatalogController extends AbstractController
     {
         $page_range = $this->getParameter('knp_paginator.page_range');
 
-        $datas = $entityManager->getRepository(Product::class)->findAll();
+        $datas = $entityManager->getRepository(Product::class)->findBy(
+            ['active' => 1]
+        );
 
         $products = $paginator->paginate(
             $datas, // Requête contenant les données à paginer (ici nos articles)
