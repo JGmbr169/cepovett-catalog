@@ -32,8 +32,12 @@
                     <td>{{ product.active ? '<i class="bi bi-check-circle text-success">' : '<i class="bi bi-x-circle text-danger">' }}</td>
                 </tr> 
                 <tr>
-                    <th>Publier</th>
-                    <td><a class="btn btn-primary" href="{{ path('app_product_post_fb', {'id': product.id}) }}"><i class="bi bi-facebook"></i></a></td>
+                    <th>Publier sur</th>
+                    <td>
+                        <a href="{{ path('app_product_post_fb', {'id': product.id}) }}"><i class="bi bi-facebook h3"></i></a>
+                        <a href="{{ path('app_product_post_tw', {'id': product.id}) }}"><i class="bi bi-twitter h3"></i></a>
+                        <a href="{{ path('app_product_post_lk', {'id': product.id}) }}"><i class="bi bi-linkedin h3"></i></a>
+                    </td>
                 </tr>   
             {% endif %}
  

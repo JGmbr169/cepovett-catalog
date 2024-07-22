@@ -22,15 +22,22 @@ class FacebookService
         ]);
     }
 
-    public function postToFacebook(string $productName, string $message, string $link): void
+    public function postToFacebook(string $productName, string $message, string $link)
     {
+        if (!$productName)
+            return false;
+
         try {
             $response = $this->facebook->post('/me/feed', [ 'message' => $message, 'link' => $link ]);
-            $this->logger->info('Publié sur FACEBOOK le produit "' . $productName .'"');
+            $this->logger->info('Publier sur FACEBOOK le produit "' . $productName .'"');
+            return 'Publier sur TWITTER le produit "' . $productName .'"';
         } catch (\Facebook\Exceptions\FacebookResponseException $e) {
             $this->logger->error('Graph returned an error: ' . $e->getMessage());
+            return 'Graph returned an error: ' . $e->getMessage();
         } catch (\Facebook\Exceptions\FacebookSDKException $e) {
             $this->logger->error('Facebook SDK returned an error: ' . $e->getMessage());
+            return 'Facebook SDK returned an error: ' . $e->getMessage();
+
         }
     }
 }

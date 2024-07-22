@@ -28,3 +28,16 @@ services:
             $appId: '%env(FACEBOOK_APP_ID)%'
             $appSecret: '%env(FACEBOOK_APP_SECRET)%'
             $accessToken: '%env(FACEBOOK_PAGE_ACCESS_TOKEN)%'
+
+    App\Service\TwitterService:
+        arguments:
+            $apiKey: '%env(TWITTER_API_KEY)%'
+            $apiSecretKey: '%env(TWITTER_API_SECRET_KEY)%'
+            $accessToken: '%env(TWITTER_ACCESS_TOKEN)%'
+            $accessTokenSecret: '%env(TWITTER_ACCESS_TOKEN_SECRET)%'
+
+    App\Service\LinkedinService:
+        arguments:
+            $clientId: '%env(LINKEDIN_CLIENT_ID)%'
+            $clientSecret: '%env(LINKEDIN_CLIENT_SECRET)%'
+            $redirectUri: '%env(LINKEDIN_REDIRECT_URI)%'
