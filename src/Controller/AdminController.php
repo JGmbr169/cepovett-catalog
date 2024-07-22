@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
 // use App\Form\ProductType;
 
-
 #[Route('/admin', name: 'app_admin')]
 class AdminController extends AbstractController
 {

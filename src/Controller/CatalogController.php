@@ -9,12 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/catalog', name: 'app_catalog')]
 class CatalogController extends AbstractController
 {
     #[Route('/', name: '_index')]
-    public function index(Request $request, PaginatorInterface $paginator, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, PaginatorInterface $paginator, EntityManagerInterface $entityManager, Security $security): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
@@ -32,7 +33,9 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/index.html.twig', [
             'controller_name' => 'CatalogController',
-            'products' => $products
+            'products' => $products,
+            'user' => $security->getUser()
+
         ]);
     }
 
