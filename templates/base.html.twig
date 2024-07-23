@@ -19,22 +19,25 @@
     </head>
     <body>
 
-    <div class="example-wrapper text-center">
 
-    <div class="container mt-5">
 
     {% if app.user %}
+        <div class="example-wrapper text-center">
+
+    <div class="container mt-5">
         <p> Bonjour <strong>{{ app.user.username }}</strong> <i class="bi bi-person-circle"></i> </p> 
         <p> 
             {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-dark" href="{{ path('app_catalog_index') }}">Catalogue</a>
                 <a class="btn btn-dark" href="{{ path('app_admin_products') }}">Espace d'administration</a>
             {% endif %}
             <a class="btn btn-secondary" href="{{ path('app_logout') }}">Me déconnecter</a>
         </p>
+            </div>
+    </div>
     {% endif %}
 
-    </div>
-    </div>
+
 
         {% block body %}{% endblock %}
         {% block javascripts %}
