@@ -34,9 +34,9 @@ Modifier le fichier **httpd-vhosts.conf**
 
 ```
 <VirtualHost *:80>
-   ServerName cepovett.local
-   DocumentRoot "c:/wamp64/www/cepovett_catalog/public"
-   <Directory "c:/wamp64/www/cepovett_catalog/public/">
+   ServerName site.local
+   DocumentRoot "<PATH_FILES>"
+   <Directory "<PATH_FILES>/">
       Options +Indexes +Includes +FollowSymLinks +MultiViews
       AllowOverride All
       Require local
@@ -47,7 +47,7 @@ Modifier le fichier **httpd-vhosts.conf**
 Modifier le fichier **hosts**
 
 ```
-127.0.0.1 cepovett.local
+127.0.0.1 site.local
 ```
 
 ## Authors
