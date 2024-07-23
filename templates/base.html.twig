@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}CEPOVETT TEST SF{% endblock %}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        {% block stylesheets %}
-            {# Ajoutez ici vos propres fichiers CSS supplémentaires si nécessaire #}
-        {% endblock %}
-
-        <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-        <link rel="shortcut icon" href="https://www.cepovett.com/wp-content/uploads/2018/10/faviconcepogroupe.png" type="image/x-icon" />
-
-    </head>
-    <body>
-
-
-
-    {% if app.user %}
-        <div class="example-wrapper text-center">
-
-    <div class="container mt-5">
-        <p> Bonjour <strong>{{ app.user.username }}</strong> <i class="bi bi-person-circle"></i> </p> 
-        <p> 
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn btn-dark" href="{{ path('app_catalog_index') }}">Catalogue</a>
-                <a class="btn btn-dark" href="{{ path('app_admin_products') }}">Espace d'administration</a>
-            {% endif %}
-            <a class="btn btn-secondary" href="{{ path('app_logout') }}">Me déconnecter</a>
-        </p>
-            </div>
-    </div>
-    {% endif %}
-
-
-
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-            {# Ajoutez ici vos propres fichiers JavaScript supplémentaires si nécessaire #}
-        {% endblock %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}CEPOVETT TEST SF{% endblock %}</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		{% block stylesheets %}
+		{# Ajoutez ici vos propres fichiers CSS supplémentaires si nécessaire #}
+		{% endblock %}
+		<link rel="shortcut icon" href="https://www.cepovett.com/wp-content/uploads/2018/10/faviconcepogroupe.png" type="image/x-icon" />
+		<style>
+			#login_form {
+			background: url(https://extranet.cepovett.com/v3/css/css_templates/imgTemplate/bgLog_Cepovett.jpg);
+			max-width: 980px;
+			min-height: 425px;
+			margin: 0 auto;
+			}
+			#login_form form {
+			background: rgba(255, 255, 255, 0.8);
+			padding: 50px;
+			}
+			#login_form form input {
+			text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="example-wrapper text-center mt-5">
+			<img src="https://extranet.cepovett.com/V3/css/css_templates/imgTemplate/logo.png" width="276" height="52" alt="Cepovett" />
+		</div>
+		{% if app.user %}
+		<div class="example-wrapper text-center">
+			<div class="container mt-5">
+				<p> Bonjour <strong>{{ app.user.username }}</strong> <i class="bi bi-person-circle"></i> </p>
+				{% if is_granted('ROLE_ADMIN') %}
+				<a class="btn btn-dark" href="{{ path('app_catalog_index') }}">Catalogue</a>
+				<a class="btn btn-danger" href="{{ path('app_admin_products') }}">Espace d'administration</a>
+				{% endif %}
+				<a class="btn btn-secondary" href="{{ path('app_logout') }}">Me déconnecter</a>
+			</div>
+		</div>
+		{% endif %}
+		{% block body %}{% endblock %}
+		{% block javascripts %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		{# Ajoutez ici vos propres fichiers JavaScript supplémentaires si nécessaire #}
+		{% endblock %}
+	</body>

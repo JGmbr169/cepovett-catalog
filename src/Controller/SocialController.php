@@ -1,5 +1,6 @@
 <?php
 
+// src/Controller/SocialController.php
 namespace App\Controller;
 
 use App\Entity\Product;

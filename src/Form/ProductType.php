@@ -1,5 +1,6 @@
 <?php
 
+// src/Form/ProductType.php
 namespace App\Form;
 
 use App\Entity\Product;

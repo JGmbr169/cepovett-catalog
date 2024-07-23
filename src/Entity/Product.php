@@ -1,5 +1,6 @@
 <?php
 
+// src/Entity/Product.php
 namespace App\Entity;
 
 use App\Repository\ProductRepository;

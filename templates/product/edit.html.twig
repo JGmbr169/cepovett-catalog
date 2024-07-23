@@ -1,15 +1,11 @@
+{# templates/product/edit.html.twig #}
 {% extends 'base.html.twig' %}
-
 {% block title %}Edit Product{% endblock %}
-
 {% block body %}
 <div class="container mt-5">
-    <h1>Edit Product</h1>
-
-    {{ include('product/_form.html.twig', {'button_label': 'modifier'}) }}
-
-    <a class="btn btn-secondary" href="{{ path('app_admin_products') }}">retour</a>
-
-    {{ include('product/_delete_form.html.twig') }}
+	<h1>Edit Product</h1>
+	{{ include('product/_form.html.twig', {'button_label': 'modifier'}) }}
+	<a class="btn btn-secondary" href="{{ path('app_admin_products') }}">retour</a>
+	{{ include('product/_delete_form.html.twig') }}
 </div>
 {% endblock %}

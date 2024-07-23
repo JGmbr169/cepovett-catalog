@@ -1,5 +1,6 @@
 <?php
 
+// src/Service/LinkedinService.php
 namespace App\Service;
 
 use Happyr\LinkedIn\LinkedIn;

@@ -1,64 +1,46 @@
+{# templates/admin/index.html.twig #}
 {% extends 'base.html.twig' %}
-
 {% block title %}Hello AdminController!{% endblock %}
-
 {% block body %}
-
 <div class="example-wrapper text-center">
-
-    <div class="container mt-5">
-        <h1 class="mb-4">Administration Produits <a href="{{ path('app_product_new') }}" class="btn btn-secondary"> ajouter </a></h1>
-        
-        {{ knp_pagination_render(products) }}
-
-        <div class="row">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Actif</th>
-                    <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                        <tr>
-                        <th scope="row">{{ product.id }}</th>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.price ~ ' €' }}</td>
-                        <td>{{ product.active ? '<i class="bi bi-check-circle text-success">' : '<i class="bi bi-x-circle text-danger">' }}</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ path('app_product_show', {'id': product.id}) }}">voir</a>
-
-                            <a class="btn btn-secondary" href="{{ path('app_product_edit', {'id': product.id}) }}">modifier</a> 
-                            
-                                            {# <form action="{{ path('app_product_delete', {'id': product.id}) }}" method="post" style="display:inline;">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-                    <button type="submit"><i class="bi bi-x"></i></button>
-                </form> #}
-
-                    {{ include('product/_delete_form.html.twig') }}
-
-                        </td>
-                        </tr>
-                    {% else %}
-                        <p class="text-center">Aucun produit trouvé.</p>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        {{ knp_pagination_render(products) }}
-    </div>
-
-    <table class="table">
-
-    <tbody>
-
-    </tbody>
-    </table>
-
-
+	<div class="container mt-5">
+		<h1 class="mb-4">Administration Produits <a href="{{ path('app_product_new') }}" class="btn btn-secondary"> ajouter </a></h1>
+		{{ knp_pagination_render(products) }}
+		<div class="row">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Prix</th>
+						<th scope="col">Actif</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in products %}
+					<tr>
+						<th scope="row">{{ product.id }}</th>
+						<td>{{ product.name }}</td>
+						<td>{{ product.price ~ ' €' }}</td>
+						<td>{{ product.active ? '<i class="bi bi-check-circle text-success">' : '<i class="bi bi-x-circle text-danger">' }}</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path('app_product_show', {'id': product.id}) }}">voir</a>
+							<a class="btn btn-secondary" href="{{ path('app_product_edit', {'id': product.id}) }}">modifier</a> 
+							{{ include('product/_delete_form.html.twig') }}
+						</td>
+					</tr>
+					{% else %}
+					<p class="text-center">Aucun produit trouvé.</p>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{{ knp_pagination_render(products) }}
+	</div>
+	<table class="table">
+		<tbody>
+		</tbody>
+	</table>
 </div>
 {% endblock %}

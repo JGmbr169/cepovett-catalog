@@ -1,15 +1,16 @@
 <?php
 
+// src/Controller/CatalogController.php
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
-use Symfony\Component\Security\Core\Security;
 
 #[Route('/catalog', name: 'app_catalog')]
 class CatalogController extends AbstractController

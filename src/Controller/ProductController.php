@@ -1,29 +1,22 @@
 <?php
 
+// src/Controller/ProductController.php
 namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Service\FacebookService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use App\Service\FacebookService;
 
 #[Route('/product')]
 class ProductController extends AbstractController
 {
-    // #[Route('/', name: 'app_product_index', methods: ['GET'])]
-    // public function index(ProductRepository $productRepository): Response
-    // {
-    //     return $this->render('product/index.html.twig', [
-    //         'products' => $productRepository->findAll(),
-    //     ]);
-    // }
-
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

@@ -1,5 +1,6 @@
 <?php
 
+// src/Controller/AdminController.php
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
-// use App\Form\ProductType;
 
 #[Route('/admin', name: 'app_admin')]
 class AdminController extends AbstractController

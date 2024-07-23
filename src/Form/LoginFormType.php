@@ -1,5 +1,6 @@
 <?php
 
+// src/Form/LoginFormType.php
 namespace App\Form;
 
 use App\Entity\User;

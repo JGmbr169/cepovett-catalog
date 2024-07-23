@@ -1,33 +1,25 @@
 {# templates/security/login.html.twig #}
-
 {% extends 'base.html.twig' %}
-
 {% block body %}
-
-    <div class="example-wrapper text-center">
-
-        <div class="container mt-5">
-
-            <h1>CEPOVETT</h1>
-
-            <h3>Connexion</h3>
-
-            <form action="{{ path('app_login') }}" method="post">
-                <div id="login_form">
-                    <div class="form-group">
-                        <label for="username" class="required">Pseudo</label>
-                        <input type="text" id="username" name="_username" required="required" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="required">Mot de passe</label>
-                        <input type="password" id="password" name="_password" required="required" class="form-control">
-                    </div>
-                    <input type="hidden" name="_target_path" value="/catalog" />
-                </div>
-                <p class="mt-3"> <button class="btn btn-primary" type="submit">Connexion</button> </p>
-            </form>
-
-        </div>
-    </div>
-
+<div class="example-wrapper text-center">
+	<div class="container mt-5">
+		<h2>Connexion</h2>
+		<div id="login_form" class="d-flex justify-content-center mt-5">
+			<div class="row">
+				<form action="{{ path('app_login') }}" method="post">
+					<div class="form-group pb-3">
+						<label for="username" class="required pb-2">Identifiant / Username</label>
+						<input type="text" id="username" name="_username" required="required" class="form-control">
+					</div>
+					<div class="form-group pb-3">
+						<label for="password" class="required pb-2">Mot de passe / Password</label>
+						<input type="password" id="password" name="_password" required="required" class="form-control">
+					</div>
+					<input type="hidden" name="_target_path" value="/catalog" />
+					<p class="mt-3"> <button class="btn btn-dark" type="submit">Connexion</button> </p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

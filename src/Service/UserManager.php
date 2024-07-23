@@ -1,5 +1,6 @@
 <?php
 
+// src/Service/UserManager.php
 namespace App\Service;
 
 use App\Entity\User;

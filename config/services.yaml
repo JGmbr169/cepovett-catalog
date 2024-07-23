@@ -20,15 +20,14 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-    
+    # Service Facebook Publish Post
     App\Service\FacebookService:
         arguments:
             $appId: '%env(FACEBOOK_APP_ID)%'
             $appSecret: '%env(FACEBOOK_APP_SECRET)%'
             $accessToken: '%env(FACEBOOK_PAGE_ACCESS_TOKEN)%'
 
+    # Service Twitter Publish Tweet
     App\Service\TwitterService:
         arguments:
             $apiKey: '%env(TWITTER_API_KEY)%'
@@ -36,6 +35,7 @@ services:
             $accessToken: '%env(TWITTER_ACCESS_TOKEN)%'
             $accessTokenSecret: '%env(TWITTER_ACCESS_TOKEN_SECRET)%'
 
+    # Service Linkedin Publish Post
     App\Service\LinkedinService:
         arguments:
             $clientId: '%env(LINKEDIN_CLIENT_ID)%'
